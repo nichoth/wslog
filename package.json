@@ -10,7 +10,8 @@
     "example": "example"
   },
   "scripts": {
-    "start": "budo example/index.js"
+    "start": "budo example/index.js",
+    "postversion": "git push && git push --tags && npm publish"
   },
   "dependencies": {
     "minimist": "^1.2.0",
