@@ -29,7 +29,6 @@ function Client () {
         isOpen = true
         var ev
         while (ev = buffer.shift()) {
-            console.log('ev', ev)
             socket.send(ev)
         }
     })
@@ -37,7 +36,6 @@ function Client () {
     socket.addEventListener('error', function (err) {
         isClosed = true
         isOpen = false
-        console.log('error')
     })
 
     socket.addEventListener('close', function () {
