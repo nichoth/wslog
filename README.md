@@ -1,5 +1,7 @@
 # wslog
 
+Log application events via websockets
+
 ## install
 
 ```
@@ -14,7 +16,7 @@ In a terminal do this:
 $ wslog
 ```
 
-And in a browser do this:
+And in a browser do this (the terminal process will exit when the client disconnects):
 
 ```js
 var Client = require('../client')
@@ -30,6 +32,9 @@ send.state({ someData: '' })
 // ["event",{"hello":"again"}]
 // ["state",{"someData":""}]
 ```
+
+
+--------------------------
 
 Filter events by namespace:
 
