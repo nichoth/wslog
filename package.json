@@ -1,0 +1,43 @@
+{
+  "name": "@nichoth/wslog",
+  "version": "0.0.0",
+  "description": "Log application events via websocket messages",
+  "main": "index.js",
+  "bin": {
+    "wslog": "index.js"
+  },
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "start": "budo example/index.js"
+  },
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "split2": "^2.2.0",
+    "ws": "^3.2.0"
+  },
+  "devDependencies": {
+    "budo": "^10.0.4",
+    "eslint": "^4.8.0",
+    "eslint-config-minlint": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nichoth/wslog.git"
+  },
+  "keywords": [
+    "websocket",
+    "log",
+    "event",
+    "debug",
+    "test",
+    "cli"
+  ],
+  "bugs": {
+    "url": "https://github.com/nichoth/wslog/issues"
+  },
+  "homepage": "https://github.com/nichoth/wslog#readme",
+  "author": "nichoth",
+  "license": "ISC"
+}
