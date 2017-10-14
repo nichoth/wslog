@@ -7,7 +7,7 @@ function Client () {
     var socket = new window.WebSocket(URL)
 
     function push (name, _data) {
-        var data = _data.preventDefault ?
+        var data = _data.preventDefault || _data.target ?
             serialize(_data) :
             _data
 
