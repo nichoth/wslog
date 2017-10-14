@@ -1,6 +1,6 @@
 {
   "name": "@nichoth/wslog",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Log application events via websocket messages",
   "main": "index.js",
   "bin": {
