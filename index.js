@@ -12,8 +12,7 @@ else listen()
 function parse (key) {
     process.stdin
         .pipe(split())
-        .on('data', function (line) {
-            var str = line.toString()
+        .on('data', function (str) {
             if (!str) return
             var row = JSON.parse(str)
             if (row[0] === key) console.log(row[1])
@@ -26,10 +25,6 @@ function listen () {
         socket.on('message', function (msg) {
             console.log(msg)
         })
-
-        // process.on('SIGINT', function () {
-        //     wsServer.close()
-        // })
 
         socket.on('close', function () {
             wsServer.close()

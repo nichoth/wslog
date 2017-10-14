@@ -1,0 +1,5 @@
+["foo",{"hello":"world"}]
+["event",{"hello":"again"}]
+["state",{"someData":""}]
+["event",{"_dom":true,"type":"click","target":{"value":""}}]
+["event",{"_dom":true,"type":"submit","target":{"elements":{"0":{"value":"test value"},"1":{"value":""},"hello":{"value":"test value"},"testInput":{"value":"test value"}}}}]

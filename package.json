@@ -10,7 +10,7 @@
     "example": "example"
   },
   "scripts": {
-    "start": "budo example/index.js",
+    "start": "budo example/index.js:bundle.js --dir example",
     "postversion": "git push && git push --tags && npm publish"
   },
   "dependencies": {

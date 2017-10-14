@@ -6,7 +6,11 @@ function Client () {
     var buffer = []
     var socket = new window.WebSocket(URL)
 
-    function push (name, data) {
+    function push (name, _data) {
+        var data = _data.preventDefault ?
+            serialize(_data) :
+            _data
+
         if (!isOpen && !isClosed) {
             return buffer.push(JSON.stringify([name, data]))
         }
@@ -44,6 +48,24 @@ function Client () {
     })
 
     return push
+}
+
+function serialize (ev) {
+    return {
+        _dom: true,
+        type: ev.type,
+        target: {
+            value: ev.target.value,
+            elements: ev.target.elements ?
+                Object.keys(ev.target.elements).reduce(function (acc, k) {
+                    acc[k] = {
+                        value: ev.target.elements[k].value
+                    }
+                    return acc
+                }, {}) :
+                undefined
+        }
+    }
 }
 
 module.exports = Client
