@@ -15,7 +15,7 @@ function parse (key) {
         .on('data', function (str) {
             if (!str) return
             var row = JSON.parse(str)
-            if (row[0] === key) console.log(row[1])
+            if (row[0] === key) console.log(JSON.stringify(row[1]))
         })
 }
 
