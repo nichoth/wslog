@@ -68,5 +68,6 @@ function serialize (ev) {
     }
 }
 
+Client.serialize = serialize
 module.exports = Client
 
