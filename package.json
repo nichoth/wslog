@@ -11,7 +11,9 @@
   },
   "scripts": {
     "start": "budo example/index.js:bundle.js --dir example",
-    "postversion": "git push && git push --tags && npm publish"
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags && npm publish",
+    "test": "node example/parse.js"
   },
   "dependencies": {
     "minimist": "^1.2.0",
