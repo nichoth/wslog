@@ -21,8 +21,8 @@ function parse (path, cb) {
 function deserialize (_ev) {
     return _ev._dom ? {
         preventDefault: noop,
-        target: _ev[1].target,
-        type: _ev[1].type
+        target: _ev.target,
+        type: _ev.type
     } :
     _ev
 }

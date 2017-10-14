@@ -72,7 +72,7 @@ $ cat example/output.json | wslog state
 
 ----------------------------------------------
 
-Parse and deserialize json logs
+Parse
 
 ```js
 var parse = require('@nichoth/wslog/parse')
@@ -100,6 +100,28 @@ parse(__dirname + '/dom-events.json', function (err, logs) {
     }
 })
 
+```
+
+
+Deserialize
+
+```js
+logs.event.map(function (ev) {
+    return parse.deserialize(ev)
+})
+
+// [
+//     { hello:'again' },
+//     // dom events are deseriazed with the target's value
+//     // and `.preventDefault` is a function that does nothing
+//     {'type':'click','target':{'value':''}},  
+//     {'type':'submit', 'target':{'elements': { 
+//         '0':{'value':'test value'},
+//         '1':{'value':''},
+//         'hello':{'value':'test value'},
+//         'testInput':{'value':'test value'}}}
+//     }
+// ]
 ```
 
 

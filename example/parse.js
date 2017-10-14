@@ -6,11 +6,15 @@ parse(__dirname + '/dom-events.json', function (err, logs) {
     assert.deepEqual(logs.foo, [{hello:'world'}] )
     assert.deepEqual(logs.state, [{someData: '' }] )
 
-    logs.event.slice(1).forEach(function (ev) {
+    var evs = logs.event.map(function (ev) {
+        return parse.deserialize(ev)
+    })
+
+    evs.slice(1).forEach(function (ev) {
         assert(typeof ev.preventDefault === 'function')
     })
 
-    assert.deepEqual(logs.event.map(function (ev) {
+    assert.deepEqual(evs.map(function (ev) {
         delete ev.preventDefault
         return ev
     }), [
