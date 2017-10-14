@@ -9,14 +9,7 @@ function parse (path, cb) {
         .pipe(split())
         .on('data', function (line) {
             if (!line) return
-            var _ev = JSON.parse(line)
-            var ev = _ev[1]._dom ?  [_ev[0], {
-                preventDefault: noop,
-                target: _ev[1].target,
-                type: _ev[1].type
-            }] :
-            _ev
-
+            var ev = JSON.parse(line)
             if (obj[ev[0]]) return obj[ev[0]].push(ev[1])
             obj[ev[0]] = [ev[1]]
         })
@@ -25,5 +18,15 @@ function parse (path, cb) {
         })
 }
 
+function deserialize (_ev) {
+    return _ev._dom ? {
+        preventDefault: noop,
+        target: _ev[1].target,
+        type: _ev[1].type
+    } :
+    _ev
+}
+
+parse.deserialize = deserialize
 module.exports = parse
 
