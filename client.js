@@ -7,10 +7,7 @@ function Client () {
     var socket = new window.WebSocket(URL)
 
     function push (name, _data) {
-        var data = _data.preventDefault || _data.target ?
-            serialize(_data) :
-            _data
-
+        var data = serialize(_data)
         if (!isOpen && !isClosed) {
             return buffer.push(JSON.stringify([name, data]))
         }
@@ -51,6 +48,8 @@ function Client () {
 }
 
 function serialize (ev) {
+    if (!ev.preventDefault && !ev.target) return ev
+
     return {
         _dom: true,
         type: ev.type,
