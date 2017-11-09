@@ -54,10 +54,31 @@ btn.addEventListener('click', function (ev) {
 //     "testInput":{"value":"test value"}}}}]
 ```
 
+### serialize dom events
 
---------------------------
+Pass the serialized event to `deserialize` on the server side.
 
-Filter events by namespace:
+```js
+var serialize = require('@nichoth/wslog/client').serialize
+var ev = serialize(domEvent)
+
+// => {
+//     _dom: true,
+//     type: 'click',
+//     target: {
+//         value: ev.target.value,
+//         elements: ev.target.elements ?
+//             Object.keys(ev.target.elements).reduce(function (acc, k) {
+//                 acc[k] = {
+//                     value: ev.target.elements[k].value
+//                 }
+//                 return acc
+//             }, {}) :
+//             undefined
+// }
+```
+
+### filter events by namespace:
 
 ```
 $ cat example/output.json | wslog foo
@@ -70,9 +91,9 @@ $ cat example/output.json | wslog state
 { someData: '' }
 ```
 
-----------------------------------------------
 
-Parse
+
+### parse event logs
 
 ```js
 var parse = require('@nichoth/wslog/parse')
@@ -103,9 +124,13 @@ parse(__dirname + '/dom-events.json', function (err, logs) {
 ```
 
 
-Deserialize
+### deserialize dom events
+
+This will add mock functions on `preventDefault()`
 
 ```js
+var parse = require('@nichoth/wslog/parse')
+
 logs.event.map(function (ev) {
     return parse.deserialize(ev)
 })
