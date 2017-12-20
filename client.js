@@ -48,7 +48,7 @@ function Client () {
 }
 
 function serialize (ev) {
-    if (!ev.preventDefault && !ev.target) return ev
+    if (!ev || (!ev.preventDefault && !ev.target)) return ev
 
     return {
         _dom: true,
