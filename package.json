@@ -18,7 +18,7 @@
   "dependencies": {
     "minimist": "^1.2.0",
     "split2": "^2.2.0",
-    "ws": "^4.0.0"
+    "ws": "^5.2.4"
   },
   "devDependencies": {
     "budo": "^11.8.4",
